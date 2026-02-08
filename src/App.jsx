@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import logo from "./assets/sereunoia-logo.png";
-import Students from "./assets/Students.jpg";
+// import Students from "./assets/Students.jpg";
 
 function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -151,9 +151,14 @@ function App() {
           <div className="hero-image fade-in-up delay-1">
             <div className="image-placeholder">
               {/* Replace this URL with your actual image URL */}
-              <img
+              {/* <img
                 src={Students}
                 alt="African students studying"
+                className="hero-background-image"
+              /> */}
+              <img
+                src="https://images.pexels.com/photos/6146973/pexels-photo-6146973.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Students studying together"
                 className="hero-background-image"
               />
               <div className="focus-card">
