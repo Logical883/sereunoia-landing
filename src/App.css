@@ -172,18 +172,45 @@ a {
   color: var(--color-accent);
 }
 
+.logo-image {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
 .menu-toggle {
   display: none;
   flex-direction: column;
   gap: 4px;
   padding: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  position: relative;
 }
 
 .menu-toggle span {
   width: 24px;
   height: 2px;
   background: white;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  display: block;
+}
+
+/* Transform to X when active */
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .nav-menu {
