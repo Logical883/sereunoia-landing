@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import logo from "./assets/sereunoia-logo.png";
+import Students from "./assets/Students.jpg";
 
 function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -125,9 +126,6 @@ function App() {
       <section id="home" className="hero">
         <div className="hero-container">
           <div className="hero-content fade-in-up">
-            {/* <p className="hero-subtitle">
-              A tech-free way to live your student
-            </p> */}
             <h1 className="hero-title">
               Focus better.
               <br />
@@ -148,12 +146,16 @@ function App() {
             </p>
             <div className="hero-buttons">
               <button className="btn-primary">Get App Now</button>
-              {/* <button className="btn-secondary">Earn Rewards</button> */}
             </div>
           </div>
           <div className="hero-image fade-in-up delay-1">
             <div className="image-placeholder">
-              <div className="image-gradient"></div>
+              {/* Replace this URL with your actual image URL */}
+              <img
+                src={Students}
+                alt="African students studying"
+                className="hero-background-image"
+              />
               <div className="focus-card">
                 <div className="card-icon">📍</div>
                 <div>
