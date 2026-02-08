@@ -114,7 +114,7 @@ function App() {
                 className="nav-cta"
                 onClick={() => scrollToSection("join")}
               >
-                Join Beta
+                Join Sereunoia
               </button>
             </li>
           </ul>
@@ -528,18 +528,17 @@ function App() {
         <div className="join-container">
           <h2 className="fade-in-up">Be Part of the First Wave</h2>
           <p className="fade-in-up delay-1">
-            Sign up today to access the beta, attend exclusive in-person events,
-            <br />
-            and earn exclusive rewards.
+            Ask questions on how to sign up today to access or use the App,
+            attend exclusive in-person events, and earn exclusive rewards.
           </p>
 
           <form className="join-form fade-in-up delay-2">
-            <input type="text" placeholder="First Name" required />
-            <input type="email" placeholder="yourname@email.com" required />
-            <input type="text" placeholder="University Name" required />
-            <input type="text" placeholder="You pronouns" />
+            <input type="text" placeholder="Logical Legend" required />
+            <input type="email" placeholder="logical@gmail.com" required />
+            <input type="text" placeholder="KNUST" required />
+            <input type="text" placeholder="Your pronouns" />
             <button type="submit" className="submit-btn">
-              Join the Sereunoia Waitlist
+              Contact Us
             </button>
             <p className="form-note">We will never spam you</p>
           </form>
