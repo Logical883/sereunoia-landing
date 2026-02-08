@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import logo from "./assets/sereunoia-logo.png";
 
 function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -61,16 +62,7 @@ function App() {
       <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
         <div className="nav-container">
           <div className="nav-logo">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle
-                cx="10"
-                cy="10"
-                r="8"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <path d="M10 6v8M6 10h8" stroke="currentColor" strokeWidth="2" />
-            </svg>
+            <img src={logo} alt="Sereunoia Logo" className="logo-image" />
             <span>Sereunoia</span>
           </div>
 
@@ -558,20 +550,7 @@ function App() {
         <div className="footer-container">
           <div className="footer-about">
             <div className="footer-logo">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="8"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M10 6v8M6 10h8"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-              </svg>
+              <img src={logo} alt="Sereunoia Logo" className="logo-image" />
               <span>Sereunoia</span>
             </div>
             <p>
