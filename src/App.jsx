@@ -125,9 +125,9 @@ function App() {
       <section id="home" className="hero">
         <div className="hero-container">
           <div className="hero-content fade-in-up">
-            <p className="hero-subtitle">
+            {/* <p className="hero-subtitle">
               A tech-free way to live your student
-            </p>
+            </p> */}
             <h1 className="hero-title">
               Focus better.
               <br />
@@ -147,8 +147,8 @@ function App() {
               focus habits.
             </p>
             <div className="hero-buttons">
-              <button className="btn-primary">Get beta Access</button>
-              <button className="btn-secondary">Earn Rewards</button>
+              <button className="btn-primary">Get App Now</button>
+              {/* <button className="btn-secondary">Earn Rewards</button> */}
             </div>
           </div>
           <div className="hero-image fade-in-up delay-1">
