@@ -1,16 +1,36 @@
-# React + Vite
+# Sereunoia 🌿
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Focus better. Feel better. Thrive in university.**
 
-Currently, two official plugins are available:
+Sereunoia is a student-focused wellness and productivity platform designed to help university students beat burnout, reduce distraction, and build healthy habits. It combines a **mobile-first digital experience** with **curated wellness and productivity events**, creating a supportive ecosystem for academic and personal growth.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+University life can be overwhelming—deadlines, distractions, burnout, and isolation.  
+Sereunoia tackles these challenges by blending:
 
-## Expanding the ESLint configuration
+- 📱 A productivity & wellness app  
+- 🤝 Social accountability (“Focus with Friends”)  
+- 🎁 Habit rewards & motivation  
+- 🌱 Wellness-centered events and experiences  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The goal is simple: **help students stay focused, feel balanced, and thrive.**
+
+---
+
+## 🎯 Core Features
+
+- **Focus with Friends**  
+  Stay productive through shared focus sessions and accountability groups.
+
+- **Habit Tracking & Rewards**  
+  Build healthy routines and earn rewards for consistency.
+
+- **Wellness & Productivity Events**  
+  Access curated on-campus and virtual events designed to recharge and inspire students.
+
+- **Minimal, Student-Friendly UI**  
+  Clean design focused on reducing cognitive overload.
+
