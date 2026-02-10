@@ -552,6 +552,120 @@ function App() {
         </div>
       </section>
 
+      {/* Client Testimonials Section */}
+      <section className="client-testimonials">
+        <div className="testimonials-container">
+          <h2 className="fade-in-up">What Students Are Saying</h2>
+          <p className="testimonials-subtitle fade-in-up delay-1">
+            Real stories from students who transformed their university experience with Sereunoia
+          </p>
+
+          <div className="testimonials-grid">
+            <div
+              className="testimonial-card fade-in-up"
+              style={{ animationDelay: "0.1s" }}
+            >
+              <div className="stars">★★★★★</div>
+              <p className="testimonial-text">
+                "Sereunoia helped me balance my course load and mental health. The focus sessions are a game-changer, and the yoga events actually helped me sleep better during finals week!"
+              </p>
+              <div className="testimonial-author">
+                <div className="author-avatar blue-gradient">AK</div>
+                <div className="author-info">
+                  <h4>Akua Mensah</h4>
+                  <p>Computer Science, KNUST</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="testimonial-card fade-in-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              <div className="stars">★★★★★</div>
+              <p className="testimonial-text">
+                "I was always distracted by my phone during study sessions. The buddy accountability feature keeps me on track, and I've improved my GPA this semester!"
+              </p>
+              <div className="testimonial-author">
+                <div className="author-avatar purple-gradient">KO</div>
+                <div className="author-info">
+                  <h4>Kwame Osei</h4>
+                  <p>Business Administration, UG</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="testimonial-card fade-in-up"
+              style={{ animationDelay: "0.3s" }}
+            >
+              <div className="stars">★★★★★</div>
+              <p className="testimonial-text">
+                "The events are so well-organized and fun! I've made friends, learned productivity hacks, and actually feel like I'm thriving instead of just surviving uni."
+              </p>
+              <div className="testimonial-author">
+                <div className="author-avatar green-gradient">EA</div>
+                <div className="author-info">
+                  <h4>Esi Addo</h4>
+                  <p>Psychology, Ashesi University</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="testimonial-card fade-in-up"
+              style={{ animationDelay: "0.4s" }}
+            >
+              <div className="stars">★★★★★</div>
+              <p className="testimonial-text">
+                "As an engineering student with a packed schedule, Sereunoia's meditation sessions help me reset between classes. The rewards system makes self-care feel like an achievement!"
+              </p>
+              <div className="testimonial-author">
+                <div className="author-avatar pink-gradient">FK</div>
+                <div className="author-info">
+                  <h4>Fiifi Koomson</h4>
+                  <p>Mechanical Engineering, KNUST</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="testimonial-card fade-in-up"
+              style={{ animationDelay: "0.5s" }}
+            >
+              <div className="stars">★★★★★</div>
+              <p className="testimonial-text">
+                "Privacy was my biggest concern with wellness apps, but Sereunoia actually respects my data. Plus, the community events feel authentic and supportive, not corporate."
+              </p>
+              <div className="testimonial-author">
+                <div className="author-avatar teal-gradient">AA</div>
+                <div className="author-info">
+                  <h4>Ama Asante</h4>
+                  <p>Law, University of Ghana</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="testimonial-card fade-in-up"
+              style={{ animationDelay: "0.6s" }}
+            >
+              <div className="stars">★★★★★</div>
+              <p className="testimonial-text">
+                "The semester planner and resources are incredibly helpful. I used to feel overwhelmed, but now I have a system that works. Sereunoia gets the student struggle!"
+              </p>
+              <div className="testimonial-author">
+                <div className="author-avatar orange-gradient">KA</div>
+                <div className="author-info">
+                  <h4>Kofi Annan</h4>
+                  <p>Medicine, UCC</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
         <div className="footer-container">
