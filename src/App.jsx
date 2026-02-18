@@ -543,7 +543,7 @@ function App() {
             <input type="text" placeholder="Logical Legend" required />
             <input type="email" placeholder="logical@gmail.com" required />
             <input type="text" placeholder="KNUST" required />
-            <input type="text" placeholder="Your pronouns" />
+            {/* <input type="text" placeholder="Your pronouns" /> */}
             <button type="submit" className="submit-btn">
               Contact Us
             </button>
