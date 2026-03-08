@@ -356,47 +356,56 @@ function App() {
       </section>
 
       {/* App Section */}
-      <section id="app" className="app-section">
-        <div className="app-container">
-          <div className="app-phones fade-in-left">
-            <div className="phone phone-1">
-              <div className="phone-screen">
-                <div className="phone-content"></div>
-              </div>
-            </div>
-            <div className="phone phone-2">
-              <div className="phone-screen">
-                <div className="phone-content dark"></div>
-              </div>
-            </div>
-          </div>
-          <div className="app-content fade-in-right">
-            <h2 className="app-title">Focus. Connect. Thrive.</h2>
-            <p className="app-description">
-              The Sereunoia app keeps you focused, awards your habits, and
-              <br />connects you with friends and campus events—it's your pocket-sized
-              <br />tool for a balanced, energetic life.
-            </p>
-            <div className="app-buttons">
-              <button className="app-store-btn">
-                <span className="btn-icon">📱</span>
-                <div>
-                  <small>Download on the</small>
-                  <strong>App Store</strong>
-                </div>
-              </button>
-              <div className="qr-code">
-                <div className="qr-grid">
-                  <div></div><div></div><div></div>
-                  <div></div><div></div><div></div>
-                  <div></div><div></div><div></div>
-                </div>
-                <small>Scan QR code</small>
-              </div>
-            </div>
-          </div>
+<section id="app" className="app-section">
+  <div className="app-container">
+    <div className="app-phones fade-in-left">
+      <div className="phone phone-1">
+        <div className="phone-screen">
+          <img
+            src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&w=400"
+            alt="App screen - student focusing"
+            className="phone-img"
+          />
         </div>
-      </section>
+      </div>
+      <div className="phone phone-2">
+        <div className="phone-screen">
+          <img
+            src="https://images.pexels.com/photos/5905445/pexels-photo-5905445.jpeg?auto=compress&cs=tinysrgb&w=400"
+            alt="App screen - wellness dashboard"
+            className="phone-img"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div className="app-content fade-in-right">
+      <h2 className="app-title">Focus. Connect. Thrive.</h2>
+      <p className="app-description">
+        The Sereunoia app keeps you focused, awards your habits, and
+        <br />connects you with friends and campus events—it's your pocket-sized
+        <br />tool for a balanced, energetic life.
+      </p>
+      <div className="app-buttons">
+        <button className="app-store-btn">
+          <span className="btn-icon">📱</span>
+          <div>
+            <small>Download on the</small>
+            <strong>App Store</strong>
+          </div>
+        </button>
+        <div className="qr-code">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://sereunoia.app&color=0a192f&bgcolor=ffffff&margin=4&format=png"
+            alt="Scan to download Sereunoia"
+            className="qr-image"
+          />
+          <small>Scan to download</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Testimonial */}
       <section className="testimonial">
