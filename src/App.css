@@ -1870,7 +1870,7 @@ a {
 /* ===== CAROUSEL DOTS ===== */
 .carousel-dots {
   position: absolute;
-  bottom: 8.5rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
