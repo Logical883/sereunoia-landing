@@ -342,15 +342,16 @@ const footerModalData = {
     ]
   },
   "privacy": {
-    title: "Privacy Policy",
+    title: "Sereunoia Privacy Policy",
     icon: "🔒",
     content: [
       {
         heading: "Our Commitment to Your Privacy",
-        body: "At Sereunoia, privacy is not a legal checkbox — it is a founding principle. We built this platform for students, and we understand that wellness data is deeply personal. This policy explains in plain language exactly what data we collect, why we collect it, how we use it, and how we protect it. We believe you deserve to understand exactly what happens with your information."
+        body: "Sereunoia (“we”, “our”, “us”) respects your privacy and is committed to protecting the personal information of our users. This Privacy Policy explains how we collect, use, store, and protect your information when you interact with our website, mobile application, and related services (collectively, the “Services”). By using Sereunoia, you agree to the practices described in this Privacy Policy."
+
       },
       {
-        heading: "What Data We Collect",
+        heading: "Information We Collect",
         body: "We collect only the data necessary to provide and improve your Sereunoia experience. This includes: Account Data (name, university email, university affiliation, profile photo if provided), Usage Data (focus session durations, wellness check-in responses, app navigation patterns), Event Data (event bookings, attendance records, feedback), and Device Data (device type, operating system, app version for technical support purposes). We do not collect your contacts, location (unless you opt in for local event recommendations), or any data beyond what is described here."
       },
       {
