@@ -175,6 +175,362 @@ function ResourceModal({ article, onClose }) {
   );
 }
 
+// ===== FOOTER MODAL DATA =====
+const footerModalData = {
+  "about": {
+    title: "About Us",
+    icon: "🌱",
+    content: [
+      {
+        heading: "Who We Are",
+        body: "Sereunoia is a student wellness and productivity platform built by university students who understand the real pressures of academic life. We were tired of wellness apps that felt clinical, generic, and completely disconnected from what it actually means to be a student. So we built something better — something that fits into the rhythm of campus life, speaks the language of students, and actually makes a difference."
+      },
+      {
+        heading: "Our Mission",
+        body: "Our mission is simple: to help every university student in Africa and beyond thrive — not just academically, but holistically. We believe that focus, wellness, and community are not separate goals. They are the same goal. When you feel good, you study better. When you study better, you feel good. Sereunoia is the bridge between the two."
+      },
+      {
+        heading: "What We Do",
+        body: "We combine a powerful mobile app with curated in-person and online events to create a complete student wellness ecosystem. The app helps you build focus habits, track your productivity, stay accountable with friends, and earn real rewards. The events — from sunrise yoga to exam focus marathons — give you the human connection and community that no app alone can provide."
+      },
+      {
+        heading: "Our Story",
+        body: "Sereunoia was founded at KNUST (Kwame Nkrumah University of Science and Technology) in Ghana, born out of late-night study sessions, burnout, and a shared belief that students deserve better tools. Our founding team experienced firsthand how overwhelming university life can be — and how transformative it is when you find the right habits, the right community, and the right support system. We built Sereunoia to be that support system for every student."
+      },
+      {
+        heading: "Our Values",
+        body: "We are guided by five core values: Student-First Design — every decision we make starts with the student experience. Radical Privacy — your data is yours, full stop. Authentic Community — we build real human connections, not follower counts. Evidence-Based Wellness — everything we recommend is grounded in research. And Joyful Productivity — because thriving should feel good, not like another assignment."
+      }
+    ]
+  },
+  "blog": {
+    title: "Blog",
+    icon: "✍️",
+    content: [
+      {
+        heading: "Welcome to the Sereunoia Blog",
+        body: "The Sereunoia Blog is your go-to resource for practical, research-backed insights on student wellness, productivity, focus, and university life. We write for real students — busy, ambitious, sometimes overwhelmed, and always looking for smarter ways to thrive. No fluff, no filler. Just actionable content you can use today."
+      },
+      {
+        heading: "What We Write About",
+        body: "Our blog covers five core themes: Focus & Productivity (Pomodoro techniques, deep work strategies, exam preparation methods), Mental Wellness (stress management, sleep optimization, mindfulness for students), Social & Community (building accountability networks, navigating university relationships, finding your tribe), Career & Growth (balancing academics with personal development, building skills alongside your degree), and Campus Life (event recaps, student stories, Sereunoia community highlights)."
+      },
+      {
+        heading: "Featured Articles",
+        body: "Some of our most-read pieces include: '5 Ways to Stay Focused During Exam Week', 'The Science of Sleep and Academic Performance', 'How to Build an Accountability System That Actually Works', 'Why Your Study Environment Matters More Than You Think', and 'The Ultimate Semester Planner Guide'. New articles are published every week, written by our team and guest contributors from the student community."
+      },
+      {
+        heading: "Contribute to the Blog",
+        body: "Are you a student with a story to tell, a productivity hack that changed your life, or a wellness insight you want to share? We welcome guest contributors from across the university community. If you have something valuable to say to your fellow students, we want to help you say it. Reach out to us at blog@sereunoia.com with your pitch and we'll get back to you within 5 business days."
+      }
+    ]
+  },
+  "events": {
+    title: "Events",
+    icon: "🎯",
+    content: [
+      {
+        heading: "Sereunoia Events — Designed for Student Life",
+        body: "Sereunoia events are premium, intentional experiences designed specifically for university students. We don't do generic wellness workshops. Every event we curate is built around the real rhythms, pressures, and needs of student life — from sunrise yoga sessions before early lectures, to focused group study marathons during midterm season, to end-of-semester celebration and recovery experiences."
+      },
+      {
+        heading: "Types of Events We Host",
+        body: "Our events fall into four categories: Wellness Events (yoga, meditation, breathwork, and movement sessions designed to reduce stress and restore energy), Productivity Events (focus marathons, study sessions with live tutor support, and planning workshops), Learning Events (skill-building workshops, career development sessions, and mindset talks by inspiring speakers), and Community Events (social mixers, accountability group meetups, and Sereunoia community celebrations)."
+      },
+      {
+        heading: "In-Person & Online",
+        body: "We host both in-person events on and around university campuses and fully virtual events accessible to students anywhere. Our in-person events are held at carefully selected venues — spaces that feel premium, calm, and intentional. Our virtual events are hosted on platforms that make participation easy and interactive. Wherever you are, there's a Sereunoia event for you."
+      },
+      {
+        heading: "How to Book",
+        body: "Booking a Sereunoia event is simple. Browse upcoming events on our platform, select the one you want, and secure your spot with a single tap. Some events are free for Sereunoia app members; others are ticketed. Early bird spots are always available for members who book through the app. Download the Sereunoia app to get notified first when new events drop."
+      },
+      {
+        heading: "Host an Event With Us",
+        body: "Are you a student organization, campus wellness center, or brand that wants to co-host a Sereunoia event? We're open to partnerships with organizations whose values align with ours. If you want to bring a Sereunoia wellness or productivity experience to your campus, reach out to us at events@sereunoia.com and let's build something together."
+      }
+    ]
+  },
+  "features": {
+    title: "Features",
+    icon: "⚡",
+    content: [
+      {
+        heading: "Timed Focus Sessions",
+        body: "Start a focused work or study session with a single tap. Choose your session length, pick your environment sound (lo-fi beats, white noise, or silence), and lock in. The app tracks your focus time, flags interruptions, and builds a history of your productivity over time. You can run solo sessions or invite friends to join a shared focus room — studying together, even remotely."
+      },
+      {
+        heading: "Buddy Accountability System",
+        body: "Pair up with a study buddy or accountability partner inside the app. Set shared goals, check in on each other's progress, and send motivational nudges when your partner needs a push. Research consistently shows that social accountability is one of the most powerful drivers of habit formation. Sereunoia makes it effortless to build and maintain these partnerships."
+      },
+      {
+        heading: "Gamified Rewards Engine",
+        body: "Every focus session you complete, every wellness habit you log, and every event you attend earns you Sereunoia points. Points unlock badges, level up your profile, and can be redeemed for real rewards — including discounts at partner brands, free event tickets, and exclusive Sereunoia merchandise. We made self-improvement feel like a game because games are fun, and fun habits stick."
+      },
+      {
+        heading: "Curated Event Access",
+        body: "The app is your gateway to all Sereunoia events. Browse upcoming events, get personalized recommendations based on your goals and interests, book your spot, and receive reminders so you never miss an experience. App members get priority access and early-bird pricing on all ticketed events — a benefit that pays for itself with a single booking."
+      },
+      {
+        heading: "Wellness Check-Ins",
+        body: "A daily 60-second wellness check-in helps you track your mood, energy levels, sleep quality, and stress. Over time, the app surfaces patterns in your data — showing you which habits correlate with your best days and which behaviors are quietly draining your energy. Knowledge is the first step to change, and Sereunoia gives you that knowledge about yourself."
+      },
+      {
+        heading: "Privacy-First Architecture",
+        body: "Unlike most wellness apps, Sereunoia is built on a privacy-first foundation. We collect only the data necessary to provide your experience. We do not sell your data to third parties. We do not use your personal information for advertising. Your wellness data is encrypted and accessible only to you. Privacy is not a feature at Sereunoia — it is a core principle."
+      }
+    ]
+  },
+  "faq": {
+    title: "Frequently Asked Questions",
+    icon: "❓",
+    content: [
+      {
+        heading: "What is Sereunoia?",
+        body: "Sereunoia is a wellness and productivity platform built specifically for university students. It combines a mobile app with curated in-person and online events to help students build focus habits, manage stress, stay accountable, and earn rewards for healthy behaviors. Think of it as your all-in-one student thriving toolkit."
+      },
+      {
+        heading: "Is Sereunoia free to use?",
+        body: "Sereunoia offers a free tier with access to core features including timed focus sessions, basic wellness check-ins, and community access. Premium features — including the full rewards engine, advanced analytics, buddy accountability tools, and event discounts — are available through a Sereunoia membership. Pricing is designed to be accessible for students. Check the app for current plans and student pricing."
+      },
+      {
+        heading: "Which universities is Sereunoia available at?",
+        body: "Sereunoia is currently available to students at all major universities across Ghana, including KNUST, University of Ghana, Ashesi University, and University of Cape Coast. We are actively expanding to other institutions across West Africa and beyond. If you want Sereunoia at your university, reach out to us at campuses@sereunoia.com and we'll prioritize your institution."
+      },
+      {
+        heading: "How do I earn rewards?",
+        body: "You earn Sereunoia points by completing focus sessions, logging daily wellness check-ins, attending events, hitting streak milestones, and referring friends to the platform. Points accumulate in your account and can be redeemed directly through the app for badges, event tickets, partner discounts, and merchandise. The more consistently you show up for yourself, the more you earn."
+      },
+      {
+        heading: "Is my data safe with Sereunoia?",
+        body: "Absolutely. Privacy is one of our core values, not an afterthought. We collect only the minimum data needed to provide your experience. We never sell your personal data or wellness information to third parties. All sensitive data is encrypted. You can request a full export or deletion of your data at any time through the app settings. For full details, please read our Privacy Policy."
+      },
+      {
+        heading: "How do I join a Sereunoia event?",
+        body: "Download the Sereunoia app, create your account, and navigate to the Events section. You'll see all upcoming events filtered by date, type, and location. Select the event you want, book your spot (free or ticketed depending on the event), and you'll receive a confirmation and reminder. App members always get priority access to event spots before they open to the general public."
+      },
+      {
+        heading: "Can I use Sereunoia without attending events?",
+        body: "Yes, absolutely. The app is a fully standalone productivity and wellness tool. Events are an optional but highly recommended addition to your Sereunoia experience. Many of our most active users attend events regularly, but the app delivers tremendous value on its own through focus sessions, wellness tracking, accountability features, and the rewards system."
+      }
+    ]
+  },
+  "help": {
+    title: "Help Center",
+    icon: "🛟",
+    content: [
+      {
+        heading: "Getting Started with Sereunoia",
+        body: "Welcome to Sereunoia! Setting up your account takes less than 3 minutes. Download the app from the App Store or Google Play, enter your university email address, create your profile (name, university, course of study), set your primary goals (focus, wellness, community, or all three), and you're ready to go. Your first focus session is waiting for you on the home screen."
+      },
+      {
+        heading: "Setting Up Your First Focus Session",
+        body: "From the home screen, tap 'Start Focus Session'. Choose your session duration (we recommend 25 minutes for beginners using the Pomodoro method), select your preferred background sound, and tap 'Begin'. The app will enter focus mode, silencing non-essential notifications and tracking your session. When the timer ends, you'll receive your session summary and points earned. It's that simple."
+      },
+      {
+        heading: "Managing Your Account",
+        body: "Access your account settings by tapping your profile icon in the top-right corner of the app. From settings, you can update your personal information, change your university affiliation, manage notification preferences, adjust privacy settings, view your data, connect or disconnect your buddy accountability partner, and manage your membership or subscription. If you need to delete your account, this option is also available in settings under 'Account Management'."
+      },
+      {
+        heading: "Troubleshooting Common Issues",
+        body: "App not loading? Try closing and reopening the app, then check your internet connection. Focus session not recording? Ensure the app has permission to run in the background on your device. Points not updating? Points typically update within 60 seconds of session completion — if they haven't appeared after 5 minutes, try refreshing your profile. Event booking not confirming? Check your email for a confirmation message and look in your spam folder. If none of these solve your issue, contact our support team."
+      },
+      {
+        heading: "Contacting Support",
+        body: "Our support team is available Monday through Friday, 8am to 6pm GMT. You can reach us through the in-app support chat (fastest response), by email at support@sereunoia.com (response within 24 hours), or through our social media channels. We take every support request seriously and aim to resolve all issues within one business day. For urgent issues affecting your event booking, please use the in-app chat for the fastest response."
+      }
+    ]
+  },
+  "privacy": {
+    title: "Privacy Policy",
+    icon: "🔒",
+    content: [
+      {
+        heading: "Our Commitment to Your Privacy",
+        body: "At Sereunoia, privacy is not a legal checkbox — it is a founding principle. We built this platform for students, and we understand that wellness data is deeply personal. This policy explains in plain language exactly what data we collect, why we collect it, how we use it, and how we protect it. We believe you deserve to understand exactly what happens with your information."
+      },
+      {
+        heading: "What Data We Collect",
+        body: "We collect only the data necessary to provide and improve your Sereunoia experience. This includes: Account Data (name, university email, university affiliation, profile photo if provided), Usage Data (focus session durations, wellness check-in responses, app navigation patterns), Event Data (event bookings, attendance records, feedback), and Device Data (device type, operating system, app version for technical support purposes). We do not collect your contacts, location (unless you opt in for local event recommendations), or any data beyond what is described here."
+      },
+      {
+        heading: "How We Use Your Data",
+        body: "Your data is used exclusively to: provide and personalize your Sereunoia experience, calculate and credit your rewards points, send you relevant event recommendations and reminders, improve app performance and fix technical issues, and generate anonymized aggregate insights about student wellness trends (never individual-level data). We do not use your data for advertising. We do not sell your data. Ever."
+      },
+      {
+        heading: "Data Sharing",
+        body: "Sereunoia does not sell, rent, or trade your personal data to any third party. We share data only in two limited circumstances: with trusted technical service providers (such as cloud hosting and analytics providers) who are contractually bound to use the data only for the services they provide to us, and when required by law (such as a valid court order). In all other cases, your data stays within Sereunoia."
+      },
+      {
+        heading: "Your Rights",
+        body: "You have the right to access all data we hold about you, correct any inaccurate data, request deletion of your data at any time, export your data in a portable format, opt out of any optional data collection, and withdraw consent for any data use at any time. To exercise any of these rights, visit Settings > Privacy in the app, or contact us at privacy@sereunoia.com. We will respond to all requests within 30 days."
+      },
+      {
+        heading: "Data Security",
+        body: "All personal data transmitted between your device and our servers is encrypted using TLS 1.3. Sensitive data at rest is encrypted using AES-256 encryption. Access to personal data within our organization is strictly limited to team members who require it to perform their roles, and all access is logged and audited. We conduct regular security reviews and respond to vulnerabilities immediately. If a data breach ever occurs, we will notify affected users within 72 hours."
+      },
+      {
+        heading: "Changes to This Policy",
+        body: "If we make material changes to this Privacy Policy, we will notify you via email and in-app notification at least 14 days before the changes take effect. We will never retroactively change how we use data you've already provided without your explicit consent. The current version of this policy is always available in the app under Settings > Privacy Policy. Last updated: November 2024."
+      }
+    ]
+  },
+  "terms": {
+    title: "Terms of Service",
+    icon: "📋",
+    content: [
+      {
+        heading: "Agreement to Terms",
+        body: "By downloading, installing, or using the Sereunoia application or attending any Sereunoia event, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services. These terms constitute a legal agreement between you and Sereunoia Technologies Ltd. We've written them in plain language because we believe you deserve to understand exactly what you're agreeing to."
+      },
+      {
+        heading: "Eligibility",
+        body: "Sereunoia is designed for and available to university and tertiary education students aged 16 and above. By creating an account, you confirm that you are currently enrolled in an accredited university or tertiary institution. We reserve the right to verify enrollment and suspend accounts that do not meet eligibility requirements. If you are under 18, you confirm that you have obtained parental or guardian consent to use our services."
+      },
+      {
+        heading: "Your Account",
+        body: "You are responsible for maintaining the security of your account credentials and for all activity that occurs under your account. You must not share your account with others or allow anyone else to access Sereunoia using your credentials. If you suspect unauthorized access to your account, contact us immediately at support@sereunoia.com. Sereunoia will not be liable for any loss arising from unauthorized use of your account."
+      },
+      {
+        heading: "Acceptable Use",
+        body: "You agree to use Sereunoia only for lawful purposes and in ways that do not infringe the rights of others. You must not use the platform to harass, bully, or harm other users, share false or misleading information, attempt to gain unauthorized access to any part of our systems, scrape or extract data from the platform, or use the platform for any commercial purpose without our written consent. Violation of these rules may result in immediate account suspension."
+      },
+      {
+        heading: "Rewards & Points",
+        body: "Sereunoia points earned through the app are non-transferable, have no cash value unless explicitly redeemed through our rewards program, and may expire after 12 months of account inactivity. We reserve the right to modify the rewards program, adjust point values, and change redemption options with 30 days notice. Points obtained through fraudulent activity (such as using automated tools to simulate focus sessions) will be forfeited and may result in account termination."
+      },
+      {
+        heading: "Events",
+        body: "By booking a Sereunoia event, you agree to the event-specific terms presented at the time of booking. Refund policies vary by event type: free events have no refund process; paid events offer full refunds up to 48 hours before the event and no refunds after that point unless the event is cancelled by Sereunoia. Sereunoia reserves the right to refuse admission to events to anyone who violates our community standards."
+      },
+      {
+        heading: "Intellectual Property",
+        body: "All content on the Sereunoia platform — including the app design, written content, graphics, logos, and event materials — is the intellectual property of Sereunoia Technologies Ltd and is protected by copyright law. You may not reproduce, distribute, or create derivative works from our content without our explicit written permission. User-generated content (such as profile information or event feedback) remains your property, but you grant us a license to use it within the platform."
+      },
+      {
+        heading: "Limitation of Liability",
+        body: "Sereunoia provides wellness and productivity tools to support your university experience, but we are not a medical or mental health service. Our content is for informational purposes only and is not a substitute for professional medical, psychological, or psychiatric advice. If you are experiencing a mental health crisis, please contact a qualified professional or emergency services immediately. Sereunoia's liability for any claim arising from use of our services is limited to the amount you paid for your subscription in the 12 months preceding the claim."
+      },
+      {
+        heading: "Changes to Terms",
+        body: "We may update these Terms of Service from time to time. When we make material changes, we will notify you via email and in-app notification at least 14 days before the new terms take effect. Your continued use of Sereunoia after the effective date constitutes acceptance of the updated terms. If you do not agree to the updated terms, you may close your account before the effective date. These terms were last updated in November 2024."
+      }
+    ]
+  },
+  "contact": {
+    title: "Contact Us",
+    icon: "💬",
+    content: [
+      {
+        heading: "We'd Love to Hear From You",
+        body: "Whether you have a question about the app, want to partner with us, are interested in bringing Sereunoia to your campus, or just want to say hello — we genuinely want to hear from you. Sereunoia is built for students, and the best ideas for making it better come directly from the community. Don't hesitate to reach out."
+      },
+      {
+        heading: "General Inquiries",
+        body: "For general questions about Sereunoia, our platform, or our mission, email us at hello@sereunoia.com. We read every message and aim to respond within 2 business days. If your inquiry is time-sensitive, please mark your subject line as URGENT and we'll prioritize your message."
+      },
+      {
+        heading: "Technical Support",
+        body: "Experiencing an issue with the app? Our support team is here to help. Reach us through the in-app support chat for the fastest response (typically under 2 hours during business hours), or email support@sereunoia.com for issues that require more detailed investigation. When contacting support, please include your device type, operating system version, and a description of the issue so we can resolve it as quickly as possible."
+      },
+      {
+        heading: "Events & Partnerships",
+        body: "Interested in co-hosting a Sereunoia event, bringing our experiences to your campus, or partnering with us as a brand or organization? We'd love to explore what's possible. Email events@sereunoia.com with a brief overview of your organization, your proposed collaboration idea, and your timeline. Our partnerships team will respond within 5 business days."
+      },
+      {
+        heading: "Campus Ambassadors",
+        body: "Want to represent Sereunoia at your university? We're building a network of passionate student ambassadors across universities in Ghana and beyond. Ambassadors get early access to new features, exclusive event invitations, ambassador-only rewards, and the opportunity to shape the future of the platform. Apply at campuses@sereunoia.com with your name, university, and why you want to be part of the Sereunoia movement."
+      },
+      {
+        heading: "Media & Press",
+        body: "Are you a journalist, blogger, or content creator covering student life, wellness, or African tech? We'd love to connect. Email press@sereunoia.com with your publication or platform details and your story angle. We can arrange interviews with our founding team, provide platform demos, and supply press materials. Our media kit is available on request."
+      }
+    ]
+  },
+  "support-email": {
+    title: "Email Support",
+    icon: "📧",
+    content: [
+      {
+        heading: "Reach Our Support Team",
+        body: "Our dedicated support team is available to help you with any questions, issues, or feedback you have about Sereunoia. We're real people who genuinely care about your experience, and we take every message seriously. No bots, no canned responses — just helpful, human support from people who use and believe in the platform."
+      },
+      {
+        heading: "Email: support@sereunoia.com",
+        body: "Send your support request to support@sereunoia.com and we'll respond within 24 hours on business days. For the fastest resolution, please include your registered email address or username, a clear description of the issue you're experiencing, any error messages you've seen, your device type and operating system, and screenshots if relevant. The more detail you provide, the faster we can help."
+      },
+      {
+        heading: "Support Hours",
+        body: "Our support team is available Monday through Friday, 8:00am to 6:00pm GMT. Messages received outside these hours will be addressed on the next business day. For urgent issues — such as an event booking problem within 24 hours of an event — please use the in-app support chat, which is monitored during extended hours including weekends for time-sensitive event-related matters."
+      },
+      {
+        heading: "Common Issues We Can Help With",
+        body: "Our support team can assist with account access and login issues, points and rewards discrepancies, event booking confirmations and cancellations, app performance and technical bugs, account data requests and deletions, membership and billing questions, and feedback or suggestions for improving the platform. Whatever your issue, we're here to make it right."
+      },
+      {
+        heading: "In-App Support Chat",
+        body: "For the fastest support, use the in-app support chat accessible from Settings > Help & Support. The chat connects you directly with our support team during business hours. Outside business hours, you can leave a message and a team member will follow up first thing the next business day. The chat also gives us immediate access to your account context, which often allows us to resolve issues faster than email."
+      }
+    ]
+  }
+};
+
+// ===== FOOTER MODAL COMPONENT =====
+function FooterModal({ modalKey, onClose }) {
+  const data = footerModalData[modalKey];
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  if (!data) return null;
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-panel footer-modal-panel" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+          </svg>
+        </button>
+
+        <div className="footer-modal-header">
+          <div className="footer-modal-icon">{data.icon}</div>
+          <h2 className="footer-modal-title">{data.title}</h2>
+          <div className="modal-divider" />
+        </div>
+
+        <div className="footer-modal-body">
+          {data.content.map((section, idx) => (
+            <div key={idx} className="modal-section">
+              <h3 className="modal-section-heading">{section.heading}</h3>
+              <p className="modal-section-body">{section.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="footer-modal-cta">
+          <p>Have more questions?</p>
+          <button
+            className="modal-cta-btn"
+            onClick={onClose}
+          >
+            Close & Explore Sereunoia →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -183,8 +539,8 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const carouselTimer = useRef(null);
-
-  // Auto-rotate carousel every 5 seconds
+  // Inside App() function, add this state:
+const [activeFooterModal, setActiveFooterModal] = useState(null);
   const goToSlide = (index) => {
     if (isTransitioning) return;
     setIsTransitioning(true);
@@ -256,6 +612,14 @@ function App() {
         <ResourceModal
           article={activeArticle}
           onClose={() => setActiveArticle(null)}
+        />
+      )}
+
+      {/* Footer Modal */}
+      {activeFooterModal && (
+        <FooterModal
+          modalKey={activeFooterModal}
+          onClose={() => setActiveFooterModal(null)}
         />
       )}
 
@@ -823,82 +1187,127 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-about">
-            <div className="footer-logo">
-              <img src={logo} alt="Sereunoia Logo" className="logo-image" />
-              <span>Sereunoia</span>
-            </div>
-            <p>
-              Wellness and productivity tools and
-              <br />
-              events for ambitious students.
-            </p>
-          </div>
+      {/* Footer */}
+<footer className="footer">
+  <div className="footer-container">
+    <div className="footer-about">
+      <div className="footer-logo">
+        <img src={logo} alt="Sereunoia Logo" className="logo-image" />
+        <span>Sereunoia</span>
+      </div>
+      <p>
+        Wellness and productivity tools and
+        <br />
+        events for ambitious students.
+      </p>
+    </div>
 
-          <div className="footer-links">
-            <div className="footer-column">
-              <h4>Platform</h4>
-              <ul>
-                <li>
-                  <a href="#">About Us</a>
-                </li>
-                <li>
-                  <a href="#">Blog</a>
-                </li>
-                <li>
-                  <a href="#">Events</a>
-                </li>
-                <li>
-                  <a href="#">Features</a>
-                </li>
-              </ul>
-            </div>
+    <div className="footer-links">
+      <div className="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("about")}
+            >
+              About Us
+            </button>
+          </li>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("blog")}
+            >
+              Blog
+            </button>
+          </li>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("events")}
+            >
+              Events
+            </button>
+          </li>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("features")}
+            >
+              Features
+            </button>
+          </li>
+        </ul>
+      </div>
 
-            <div className="footer-column">
-              <h4>Resources</h4>
-              <ul>
-                <li>
-                  <a href="#">FAQ</a>
-                </li>
-                <li>
-                  <a href="#">Help Center</a>
-                </li>
-                <li>
-                  <a href="#">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#">Terms of Service</a>
-                </li>
-              </ul>
-            </div>
+      <div className="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("faq")}
+            >
+              FAQ
+            </button>
+          </li>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("help")}
+            >
+              Help Center
+            </button>
+          </li>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("privacy")}
+            >
+              Privacy Policy
+            </button>
+          </li>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("terms")}
+            >
+              Terms of Service
+            </button>
+          </li>
+        </ul>
+      </div>
 
-            <div className="footer-column">
-              <h4>Support</h4>
-              <ul>
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-                <li>
-                  <a href="#">support@sereunoia.com</a>
-                </li>
-              </ul>
-              <div className="social-links">
-                <a href="#" aria-label="Twitter">
-                  𝕏
-                </a>
-                <a href="#" aria-label="Facebook">
-                  f
-                </a>
-                <a href="#" aria-label="Instagram">
-                  📷
-                </a>
-              </div>
-            </div>
-          </div>
+      <div className="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("contact")}
+            >
+              Contact
+            </button>
+          </li>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => setActiveFooterModal("support-email")}
+            >
+              support@sereunoia.com
+            </button>
+          </li>
+        </ul>
+        <div className="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">📷</a>
         </div>
-      </footer>
+      </div>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
