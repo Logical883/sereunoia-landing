@@ -407,18 +407,21 @@ a {
   display: none; /* Hidden when using real image */
 }
 
+/* ===== FOCUS CARD ===== */
 .focus-card {
   position: absolute;
   bottom: 2rem;
-  left: 2rem;
-  right: 2rem;
-  background: rgba(10, 25, 47, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 1.25rem 1.5rem;
   border-radius: 16px;
   display: flex;
   gap: 1rem;
   align-items: center;
+  border: 1px solid rgba(0, 217, 255, 0.2);
   animation: float 3s ease-in-out infinite;
 }
 
@@ -1867,7 +1870,7 @@ a {
 /* ===== CAROUSEL DOTS ===== */
 .carousel-dots {
   position: absolute;
-  bottom: 5rem;
+  bottom: 8.5rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
