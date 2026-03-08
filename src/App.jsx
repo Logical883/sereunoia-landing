@@ -1,6 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import logo from "./assets/sereunoia-logo.png";
+
+// Hero carousel images
+const heroImages = [
+  {
+    src: "https://images.pexels.com/photos/7516347/pexels-photo-7516347.jpeg?auto=compress&cs=tinysrgb&w=900",
+    alt: "Students thriving at university",
+    caption: "Build your community"
+  },
+  {
+    src: "https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=900",
+    alt: "Student in deep focus session",
+    caption: "Master deep focus"
+  },
+  {
+    src: "https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=900",
+    alt: "Student in wellness and calm state",
+    caption: "Find your balance"
+  },
+  {
+    src: "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=900",
+    alt: "Sunrise yoga and meditation session",
+    caption: "Restore your energy"
+  },
+  {
+    src: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=900",
+    alt: "Group study session",
+    caption: "Study smarter together"
+  },
+];
 
 // Resource modal data
 const resourceArticles = [
@@ -130,14 +159,12 @@ function ResourceModal({ article, onClose }) {
         <div className="modal-body">
           <h2 className="modal-title">{article.title}</h2>
           <div className="modal-divider" />
-
           {article.content.map((section, idx) => (
             <div key={idx} className="modal-section">
               <h3 className="modal-section-heading">{section.heading}</h3>
               <p className="modal-section-body">{section.body}</p>
             </div>
           ))}
-
           <div className="modal-footer-cta">
             <p>Want tools that make this easier?</p>
             <button className="modal-cta-btn">Download the App →</button>
@@ -153,6 +180,43 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeArticle, setActiveArticle] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const carouselTimer = useRef(null);
+
+  // Auto-rotate carousel every 5 seconds
+  const goToSlide = (index) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setIsTransitioning(false);
+    }, 400);
+  };
+
+  const nextSlide = () => {
+    const next = (currentSlide + 1) % heroImages.length;
+    goToSlide(next);
+  };
+
+  const prevSlide = () => {
+    const prev = (currentSlide - 1 + heroImages.length) % heroImages.length;
+    goToSlide(prev);
+  };
+
+  const resetTimer = () => {
+    if (carouselTimer.current) clearInterval(carouselTimer.current);
+    carouselTimer.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    carouselTimer.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(carouselTimer.current);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -215,19 +279,44 @@ function App() {
 
           <ul className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
             <li>
-              <button className={activeSection === "home" ? "active" : ""} onClick={() => scrollToSection("home")}>Home</button>
+              <button
+                className={activeSection === "home" ? "active" : ""}
+                onClick={() => scrollToSection("home")}
+              >
+                Home
+              </button>
             </li>
             <li>
-              <button className={activeSection === "features" ? "active" : ""} onClick={() => scrollToSection("features")}>Features</button>
+              <button
+                className={activeSection === "features" ? "active" : ""}
+                onClick={() => scrollToSection("features")}
+              >
+                Features
+              </button>
             </li>
             <li>
-              <button className={activeSection === "events" ? "active" : ""} onClick={() => scrollToSection("events")}>Events</button>
+              <button
+                className={activeSection === "events" ? "active" : ""}
+                onClick={() => scrollToSection("events")}
+              >
+                Events
+              </button>
             </li>
             <li>
-              <button className={activeSection === "resources" ? "active" : ""} onClick={() => scrollToSection("resources")}>Resources</button>
+              <button
+                className={activeSection === "resources" ? "active" : ""}
+                onClick={() => scrollToSection("resources")}
+              >
+                Resources
+              </button>
             </li>
             <li>
-              <button className="nav-cta" onClick={() => scrollToSection("join")}>Join Sereunoia</button>
+              <button
+                className="nav-cta"
+                onClick={() => scrollToSection("join")}
+              >
+                Join Sereunoia
+              </button>
             </li>
           </ul>
         </div>
@@ -252,19 +341,40 @@ function App() {
             <p className="hero-description">
               Sereunoia combines a mobile app with curated events to help
               <br />
-              students build balance, reduce distractions, and build healthy, focus habits.
+              students build balance, reduce distractions, and build healthy,
+              focus habits.
             </p>
             <div className="hero-buttons">
               <button className="btn-primary">Get App Now</button>
             </div>
           </div>
+
+          {/* Hero Carousel */}
           <div className="hero-image fade-in-up delay-1">
-            <div className="image-placeholder">
-              <img
-                src="https://images.pexels.com/photos/6146973/pexels-photo-6146973.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Students studying together"
-                className="hero-background-image"
-              />
+            <div className="carousel-wrapper">
+
+              {/* Images */}
+              <div className="carousel-track">
+                {heroImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`carousel-slide ${
+                      index === currentSlide ? "active" : ""
+                    } ${isTransitioning ? "transitioning" : ""}`}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="carousel-image"
+                    />
+                    <div className="carousel-caption-overlay">
+                      <span className="carousel-caption">{image.caption}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Focus card always on top */}
               <div className="focus-card">
                 <div className="card-icon">📍</div>
                 <div>
@@ -274,6 +384,47 @@ function App() {
                   </div>
                 </div>
               </div>
+
+              {/* Prev / Next arrows */}
+              <button
+                className="carousel-arrow carousel-arrow-left"
+                onClick={() => { prevSlide(); resetTimer(); }}
+                aria-label="Previous image"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              <button
+                className="carousel-arrow carousel-arrow-right"
+                onClick={() => { nextSlide(); resetTimer(); }}
+                aria-label="Next image"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+
+              {/* Dot indicators */}
+              <div className="carousel-dots">
+                {heroImages.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`carousel-dot ${index === currentSlide ? "active" : ""}`}
+                    onClick={() => { goToSlide(index); resetTimer(); }}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Progress bar timer */}
+              <div className="carousel-progress">
+                <div
+                  className="carousel-progress-fill"
+                  key={currentSlide}
+                />
+              </div>
+
             </div>
           </div>
         </div>
@@ -283,137 +434,177 @@ function App() {
       <section id="features" className="features">
         <div className="features-container">
           <p className="section-label">THE PROBLEM</p>
-          <h2 className="section-title">University life is exciting—but exhausting.</h2>
+          <h2 className="section-title">
+            University life is exciting—but exhausting.
+          </h2>
           <p className="section-description">
-            Juggling classes, social life, self/tuition, and deadlines is overwhelming. Most wellness
-            <br />apps feel too generic, clinical, or disconnected from real student life.
+            Juggling classes, social life, self/tuition, and deadlines is
+            overwhelming. Most wellness
+            <br />
+            apps feel too generic, clinical, or disconnected from real student
+            life.
           </p>
           <p className="features-subtitle">
-            <strong>Sereunoia was built for students, by students—</strong>to make focus, wellness, and productivity
-            <br />simple, social, and fun.
+            <strong>Sereunoia was built for students, by students—</strong>to
+            make focus, wellness, and productivity
+            <br />
+            simple, social, and fun.
           </p>
 
           <div className="features-grid">
-            <div className="feature-card fade-in-up" style={{ animationDelay: "0.1s" }}>
+            <div
+              className="feature-card fade-in-up"
+              style={{ animationDelay: "0.1s" }}
+            >
               <div className="feature-icon blue">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-                  <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2"/>
                 </svg>
               </div>
               <h3>Timed Focus Sessions</h3>
-              <p>Start solo or group sessions to lock into work or study, then track your focus during each session.</p>
+              <p>
+                Start solo or group sessions to lock into work or study, then
+                track your focus during each session.
+              </p>
             </div>
 
-            <div className="feature-card fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <div
+              className="feature-card fade-in-up"
+              style={{ animationDelay: "0.2s" }}
+            >
               <div className="feature-icon purple">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="2" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" />
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2"/>
+                  <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2"/>
                 </svg>
               </div>
               <h3>Buddy Accountability</h3>
-              <p>Pair up with friends to keep each other on track and motivated.</p>
+              <p>
+                Pair up with friends to keep each other on track and motivated.
+              </p>
             </div>
 
-            <div className="feature-card fade-in-up" style={{ animationDelay: "0.3s" }}>
+            <div
+              className="feature-card fade-in-up"
+              style={{ animationDelay: "0.3s" }}
+            >
               <div className="feature-icon green">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" strokeWidth="2" />
-                  <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" strokeWidth="2" />
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" strokeWidth="2"/>
+                  <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" strokeWidth="2"/>
                 </svg>
               </div>
               <h3>Gamified Rewards</h3>
-              <p>Earn badges, climb leaderboards, and redeem real rewards when you hit your goals.</p>
+              <p>
+                Earn badges, climb leaderboards, and redeem real rewards when
+                you hit your goals.
+              </p>
             </div>
 
-            <div className="feature-card fade-in-up" style={{ animationDelay: "0.4s" }}>
+            <div
+              className="feature-card fade-in-up"
+              style={{ animationDelay: "0.4s" }}
+            >
               <div className="feature-icon pink">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-                  <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" strokeWidth="2" />
-                  <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" strokeWidth="2" />
-                  <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" strokeWidth="2" />
+                  <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" strokeWidth="2"/>
+                  <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" strokeWidth="2"/>
+                  <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" strokeWidth="2"/>
                 </svg>
               </div>
               <h3>Curated Events</h3>
-              <p>Join live yoga, meditation, workshops and wellness activities—online and IRL.</p>
+              <p>
+                Join live yoga, meditation, workshops and wellness
+                activities—online and IRL.
+              </p>
             </div>
 
-            <div className="feature-card fade-in-up" style={{ animationDelay: "0.5s" }}>
+            <div
+              className="feature-card fade-in-up"
+              style={{ animationDelay: "0.5s" }}
+            >
               <div className="feature-icon teal">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" strokeWidth="2" />
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" strokeWidth="2"/>
                 </svg>
               </div>
               <h3>Privacy First</h3>
-              <p>Your data belongs to you alone. Your data stays private. Your data won't be sold.</p>
+              <p>
+                Your data belongs to you alone. Your data stays private. Your
+                data won't be sold.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* App Section */}
-<section id="app" className="app-section">
-  <div className="app-container">
-    <div className="app-phones fade-in-left">
-      <div className="phone phone-1">
-        <div className="phone-screen">
-          <img
-            src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&w=400"
-            alt="App screen - student focusing"
-            className="phone-img"
-          />
-        </div>
-      </div>
-      <div className="phone phone-2">
-        <div className="phone-screen">
-          <img
-            src="https://images.pexels.com/photos/5905445/pexels-photo-5905445.jpeg?auto=compress&cs=tinysrgb&w=400"
-            alt="App screen - wellness dashboard"
-            className="phone-img"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div className="app-content fade-in-right">
-      <h2 className="app-title">Focus. Connect. Thrive.</h2>
-      <p className="app-description">
-        The Sereunoia app keeps you focused, awards your habits, and
-        <br />connects you with friends and campus events—it's your pocket-sized
-        <br />tool for a balanced, energetic life.
-      </p>
-      <div className="app-buttons">
-        <button className="app-store-btn">
-          <span className="btn-icon">📱</span>
-          <div>
-            <small>Download on the</small>
-            <strong>App Store</strong>
+      <section id="app" className="app-section">
+        <div className="app-container">
+          <div className="app-phones fade-in-left">
+            <div className="phone phone-1">
+              <div className="phone-screen">
+                <img
+                  src="https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  alt="Student using focus app"
+                  className="phone-img"
+                />
+              </div>
+            </div>
+            <div className="phone phone-2">
+              <div className="phone-screen">
+                <img
+                  src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  alt="Wellness and productivity dashboard"
+                  className="phone-img"
+                />
+              </div>
+            </div>
           </div>
-        </button>
-        <div className="qr-code">
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://sereunoia.app&color=0a192f&bgcolor=ffffff&margin=4&format=png"
-            alt="Scan to download Sereunoia"
-            className="qr-image"
-          />
-          <small>Scan to download</small>
+
+          <div className="app-content fade-in-right">
+            <h2 className="app-title">Focus. Connect. Thrive.</h2>
+            <p className="app-description">
+              The Sereunoia app keeps you focused, awards your habits, and
+              <br />
+              connects you with friends and campus events—it's your pocket-sized
+              <br />
+              tool for a balanced, energetic life.
+            </p>
+            <div className="app-buttons">
+              <button className="app-store-btn">
+                <span className="btn-icon">📱</span>
+                <div>
+                  <small>Download on the</small>
+                  <strong>App Store</strong>
+                </div>
+              </button>
+              <div className="qr-code">
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://sereunoia.app&color=0a192f&bgcolor=ffffff&margin=4&format=png"
+                  alt="Scan to download Sereunoia"
+                  className="qr-image"
+                />
+                <small>Scan to download</small>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Testimonial */}
       <section className="testimonial">
         <div className="testimonial-container">
           <blockquote className="fade-in-up">
             "Sereunoia isn't just digital tools. We host intentional,
-            <br />premium wellness and productivity experiences you
-            <br />won't find anywhere else on campus."
+            <br />
+            premium wellness and productivity experiences you
+            <br />
+            won't find anywhere else on campus."
           </blockquote>
         </div>
       </section>
@@ -428,30 +619,69 @@ function App() {
           </div>
 
           <div className="events-grid">
-            <div className="event-card fade-in-up" style={{ animationDelay: "0.1s" }}>
+            <div
+              className="event-card fade-in-up"
+              style={{ animationDelay: "0.1s" }}
+            >
               <div className="event-badge">Nov 22</div>
-              <div className="event-image event-yoga"></div>
+              <div className="event-image">
+                <img
+                  src="https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Sunrise Yoga and Meditation"
+                />
+              </div>
               <h3>Sunrise Yoga & Meditation</h3>
-              <p className="event-location">📍 Location: <span>TBD</span></p>
-              <p className="event-description">Start your day with calm, body-centric</p>
+              <p className="event-location">
+                📍 Location: <span>TBD</span>
+              </p>
+              <p className="event-description">
+                Start your day with calm, body-centric movement and guided
+                mindfulness.
+              </p>
               <button className="event-btn">Book Now</button>
             </div>
 
-            <div className="event-card fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <div
+              className="event-card fade-in-up"
+              style={{ animationDelay: "0.2s" }}
+            >
               <div className="event-badge green">Nov 29</div>
-              <div className="event-image event-marathon"></div>
+              <div className="event-image">
+                <img
+                  src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Midterm Focus Marathon"
+                />
+              </div>
               <h3>Midterm Focus Marathon</h3>
-              <p className="event-location">📍 Location: <span>TBD</span></p>
-              <p className="event-description">Co-work group study session with live tutor.</p>
+              <p className="event-location">
+                📍 Location: <span>TBD</span>
+              </p>
+              <p className="event-description">
+                Co-work group study session with live tutor support and focus
+                tools.
+              </p>
               <button className="event-btn">Book Now</button>
             </div>
 
-            <div className="event-card fade-in-up" style={{ animationDelay: "0.3s" }}>
+            <div
+              className="event-card fade-in-up"
+              style={{ animationDelay: "0.3s" }}
+            >
               <div className="event-badge dark">Dec 10</div>
-              <div className="event-image event-schedule"></div>
+              <div className="event-image">
+                <img
+                  src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Master Your Schedule Workshop"
+                />
+              </div>
               <h3>Master Your Schedule</h3>
-              <p className="event-location">📍 Location: <span>TBD</span></p>
-              <p className="event-description">Crush your day with high-efficiency tools and scheduling.</p>
+              <p className="event-location">
+                📍 Location: <span>TBD</span>
+              </p>
+              <p className="event-description">
+                Crush your day with high-efficiency tools and scheduling
+                strategies.
+              </p>
               <button className="event-btn light">Book Now</button>
             </div>
           </div>
@@ -462,7 +692,9 @@ function App() {
       <section id="resources" className="resources">
         <div className="resources-container">
           <h2>Learn. Grow. Thrive</h2>
-          <p className="resources-subtitle">Short, actionable wellness and productivity tips for busy students.</p>
+          <p className="resources-subtitle">
+            Short, actionable wellness and productivity tips for busy students.
+          </p>
 
           <div className="resources-grid">
             {resourceArticles.map((article, idx) => (
@@ -473,7 +705,9 @@ function App() {
               >
                 <div className="resource-card-thumb">
                   <img src={article.image} alt={article.title} />
-                  <span className="resource-card-category">{article.category}</span>
+                  <span className="resource-card-category">
+                    {article.category}
+                  </span>
                 </div>
                 <div className="resource-card-body">
                   <h3>{article.title}</h3>
@@ -504,7 +738,9 @@ function App() {
             <input type="text" placeholder="Logical Legend" required />
             <input type="email" placeholder="logical@gmail.com" required />
             <input type="text" placeholder="KNUST" required />
-            <button type="submit" className="submit-btn">Contact Us</button>
+            <button type="submit" className="submit-btn">
+              Contact Us
+            </button>
             <p className="form-note">We will never spam you</p>
           </form>
         </div>
@@ -515,23 +751,66 @@ function App() {
         <div className="testimonials-container">
           <h2 className="fade-in-up">What Students Are Saying</h2>
           <p className="testimonials-subtitle fade-in-up delay-1">
-            Real stories from students who transformed their university experience with Sereunoia
+            Real stories from students who transformed their university
+            experience with Sereunoia
           </p>
 
           <div className="testimonials-grid">
             {[
-              { initials: "AK", name: "Akua Mensah", role: "Computer Science, KNUST", gradient: "blue-gradient", text: "Sereunoia helped me balance my course load and mental health. The focus sessions are a game-changer, and the yoga events actually helped me sleep better during finals week!" },
-              { initials: "KO", name: "Kwame Osei", role: "Business Administration, UG", gradient: "purple-gradient", text: "I was always distracted by my phone during study sessions. The buddy accountability feature keeps me on track, and I've improved my GPA this semester!" },
-              { initials: "EA", name: "Esi Addo", role: "Psychology, Ashesi University", gradient: "green-gradient", text: "The events are so well-organized and fun! I've made friends, learned productivity hacks, and actually feel like I'm thriving instead of just surviving uni." },
-              { initials: "FK", name: "Fiifi Koomson", role: "Mechanical Engineering, KNUST", gradient: "pink-gradient", text: "As an engineering student with a packed schedule, Sereunoia's meditation sessions help me reset between classes. The rewards system makes self-care feel like an achievement!" },
-              { initials: "AA", name: "Ama Asante", role: "Law, University of Ghana", gradient: "teal-gradient", text: "Privacy was my biggest concern with wellness apps, but Sereunoia actually respects my data. Plus, the community events feel authentic and supportive, not corporate." },
-              { initials: "KA", name: "Kofi Annan", role: "Medicine, UCC", gradient: "orange-gradient", text: "The semester planner and resources are incredibly helpful. I used to feel overwhelmed, but now I have a system that works. Sereunoia gets the student struggle!" },
+              {
+                initials: "AK",
+                name: "Akua Mensah",
+                role: "Computer Science, KNUST",
+                gradient: "blue-gradient",
+                text: "Sereunoia helped me balance my course load and mental health. The focus sessions are a game-changer, and the yoga events actually helped me sleep better during finals week!",
+              },
+              {
+                initials: "KO",
+                name: "Kwame Osei",
+                role: "Business Administration, UG",
+                gradient: "purple-gradient",
+                text: "I was always distracted by my phone during study sessions. The buddy accountability feature keeps me on track, and I've improved my GPA this semester!",
+              },
+              {
+                initials: "EA",
+                name: "Esi Addo",
+                role: "Psychology, Ashesi University",
+                gradient: "green-gradient",
+                text: "The events are so well-organized and fun! I've made friends, learned productivity hacks, and actually feel like I'm thriving instead of just surviving uni.",
+              },
+              {
+                initials: "FK",
+                name: "Fiifi Koomson",
+                role: "Mechanical Engineering, KNUST",
+                gradient: "pink-gradient",
+                text: "As an engineering student with a packed schedule, Sereunoia's meditation sessions help me reset between classes. The rewards system makes self-care feel like an achievement!",
+              },
+              {
+                initials: "AA",
+                name: "Ama Asante",
+                role: "Law, University of Ghana",
+                gradient: "teal-gradient",
+                text: "Privacy was my biggest concern with wellness apps, but Sereunoia actually respects my data. Plus, the community events feel authentic and supportive, not corporate.",
+              },
+              {
+                initials: "KA",
+                name: "Kofi Annan",
+                role: "Medicine, UCC",
+                gradient: "orange-gradient",
+                text: "The semester planner and resources are incredibly helpful. I used to feel overwhelmed, but now I have a system that works. Sereunoia gets the student struggle!",
+              },
             ].map((t, i) => (
-              <div key={i} className="testimonial-card fade-in-up" style={{ animationDelay: `${0.1 * (i + 1)}s` }}>
+              <div
+                key={i}
+                className="testimonial-card fade-in-up"
+                style={{ animationDelay: `${0.1 * (i + 1)}s` }}
+              >
                 <div className="stars">★★★★★</div>
                 <p className="testimonial-text">"{t.text}"</p>
                 <div className="testimonial-author">
-                  <div className={`author-avatar ${t.gradient}`}>{t.initials}</div>
+                  <div className={`author-avatar ${t.gradient}`}>
+                    {t.initials}
+                  </div>
                   <div className="author-info">
                     <h4>{t.name}</h4>
                     <p>{t.role}</p>
@@ -551,40 +830,70 @@ function App() {
               <img src={logo} alt="Sereunoia Logo" className="logo-image" />
               <span>Sereunoia</span>
             </div>
-            <p>Wellness and productivity tools and<br />events for ambitious students.</p>
+            <p>
+              Wellness and productivity tools and
+              <br />
+              events for ambitious students.
+            </p>
           </div>
 
           <div className="footer-links">
             <div className="footer-column">
               <h4>Platform</h4>
               <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Features</a></li>
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+                <li>
+                  <a href="#">Blog</a>
+                </li>
+                <li>
+                  <a href="#">Events</a>
+                </li>
+                <li>
+                  <a href="#">Features</a>
+                </li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h4>Resources</h4>
               <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
+                <li>
+                  <a href="#">FAQ</a>
+                </li>
+                <li>
+                  <a href="#">Help Center</a>
+                </li>
+                <li>
+                  <a href="#">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#">Terms of Service</a>
+                </li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h4>Support</h4>
               <ul>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">support@sereunoia.com</a></li>
+                <li>
+                  <a href="#">Contact</a>
+                </li>
+                <li>
+                  <a href="#">support@sereunoia.com</a>
+                </li>
               </ul>
               <div className="social-links">
-                <a href="#" aria-label="Twitter">𝕏</a>
-                <a href="#" aria-label="Facebook">f</a>
-                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="Twitter">
+                  𝕏
+                </a>
+                <a href="#" aria-label="Facebook">
+                  f
+                </a>
+                <a href="#" aria-label="Instagram">
+                  📷
+                </a>
               </div>
             </div>
           </div>
